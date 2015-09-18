@@ -1,0 +1,32 @@
+<p>
+<b><strong> Showing Article </strong> </b>
+</p>
+ 
+<p>
+  <strong>Title:</strong>
+  <%= @article.title %>
+</p>
+ 
+<p>
+  <strong>Text:</strong>
+  <%= @article.text %>
+</p>
+ 
+<h2>Comments</h2>
+<p>
+<%= link_to "Comments", "#", id: "comments-link" %>
+</p>
+
+<section id="comments-section">
+<ol id="comments">
+<%= render @article.comments %>
+</ol>
+
+<h2>Add a comment:</h2>
+<%= render 'comments/form' %>
+
+</section>
+
+<%= link_to 'Edit', edit_article_path(@article) %> |
+<%= link_to 'Back', articles_path %>
+
