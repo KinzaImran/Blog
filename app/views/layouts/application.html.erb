@@ -1,18 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Blog1</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-  <%= render 'layouts/stylesheets' %>
+<title>Blog</title>
+
+<%= csrf_meta_tags %>
+<%= render 'layouts/stylesheets' %>
 </head>
 <body>
+
 <div class="container">
-<%= image_tag("logo3.png", :alt => "Blog1 App", :class => "round") %>
-<section class="round">
+<%= render 'layouts/header' %>
 <%= yield %>
-</section>
+<% flash.each do |message_type,message| %>
+<%= message %>
+
+<% end %>
+
+
+<body id="<%= params[:controller].parameterize %>_controller">
+
+
 </div>
 </body>
 </html>
+

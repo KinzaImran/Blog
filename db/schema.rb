@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150919162101) do
+ActiveRecord::Schema.define(version: 20150921211153) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,10 +35,14 @@ ActiveRecord::Schema.define(version: 20150919162101) do
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
+    t.integer  "comment_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.string   "password_digest"
   end
 
+  add_index "users", ["comment_id"], name: "index_users_on_comment_id", using: :btree
+
   add_foreign_key "comments", "articles"
+  add_foreign_key "users", "comments"
 end
